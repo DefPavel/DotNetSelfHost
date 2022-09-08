@@ -15,7 +15,7 @@ namespace DotNetSelfHost.WinForms.Services
         {
 
 #pragma warning disable SYSLIB0014 // Тип или член устарел
-            var req = (HttpWebRequest)WebRequest.Create("http://localhost:8080/api" + queryUrl);     // Создаём запрос
+            var req = (HttpWebRequest)WebRequest.Create(queryUrl);     // Создаём запрос
 #pragma warning restore SYSLIB0014 // Тип или член устарел
             req.Method = httpMethod;                                            // Выбираем метод запроса
             req.Headers.Add("auth-token", token);
@@ -33,7 +33,7 @@ namespace DotNetSelfHost.WinForms.Services
         {
             // Получить путь рабочего стола
             //var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var path = "C:";
+            var path = "D:";
 
             var file = path + $"\\Документы-Программы\\{reportName.Replace(" ", "_")}_{DateTime.Now:yyyy-MM-dd-HH-mm-ss}.docx";
             if (Directory.Exists(path + $"\\Документы-Программы"))
@@ -51,14 +51,14 @@ namespace DotNetSelfHost.WinForms.Services
 
             }
             inputStream.Dispose();
-            var docxUrl = EnumerateAllFiles("C:\\Program Files", "WINWORD.exe");
+            var docxUrl = EnumerateAllFiles("C:\\Program Files", "WINWORD.EXE");
             if (docxUrl.Any())
             {
-                _ = Process.Start(docxUrl.First(), file);
+                _ = Process.Start(@$"""{docxUrl.First()}""", file);
                 return new FileStatus { Name = file , Status = true};
 
             }
-            else return new FileStatus { Name= file , Status = false};
+            else return new FileStatus { Name = file , Status = false};
 
         }
         public static IEnumerable<string> EnumerateAllFiles(string path, string pattern)

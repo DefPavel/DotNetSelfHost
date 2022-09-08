@@ -41,19 +41,19 @@ namespace Net5SelfHost.WinForms
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(10, 23);
+            this.nameTextBox.Location = new System.Drawing.Point(12, 27);
             this.nameTextBox.Margin = new System.Windows.Forms.Padding(1);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(251, 21);
+            this.nameTextBox.Size = new System.Drawing.Size(292, 23);
             this.nameTextBox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 9);
+            this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Путь к Word:";
             // 
@@ -69,19 +69,19 @@ namespace Net5SelfHost.WinForms
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripItemExit});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(119, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(121, 26);
             // 
             // toolStripItemExit
             // 
             this.toolStripItemExit.Name = "toolStripItemExit";
-            this.toolStripItemExit.Size = new System.Drawing.Size(118, 22);
+            this.toolStripItemExit.Size = new System.Drawing.Size(120, 22);
             this.toolStripItemExit.Text = "Закрыть";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 87);
+            this.ClientSize = new System.Drawing.Size(316, 100);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameTextBox);
             this.DoubleBuffered = true;

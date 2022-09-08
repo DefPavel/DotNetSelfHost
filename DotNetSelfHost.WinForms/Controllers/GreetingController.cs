@@ -1,6 +1,7 @@
 ﻿using DotNetSelfHost.WinForms.Models;
 using DotNetSelfHost.WinForms.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Threading.Tasks;
 
 namespace Net5SelfHost.WinForms.Controllers
@@ -17,7 +18,19 @@ namespace Net5SelfHost.WinForms.Controllers
             var getFile = await FileService.JsonPostWithToken("secret", url, "GET", "Отчет");
 
             return getFile;
-            //return new JsonResult(greeting);
         }
+
+        [HttpPost]
+        public async Task<FileStatus> Post([FromBody] FileStatus file)
+        {
+            if (file == null)
+                return new FileStatus { Name = "Не передан URL" , Status = false};
+            
+            // Get File
+            var getFile = await FileService.JsonPostWithToken("secret", file.Url, "GET", "Отчет");
+
+            return getFile;
+        }
+
     }
 }

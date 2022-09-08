@@ -7,7 +7,7 @@ namespace Net5SelfHost.WinForms
 {
     public partial class MainForm : Form
     {
-        private SynchronizationContext _syncRoot;
+        private readonly SynchronizationContext _syncRoot;
 
         [DllImport("User32.dll", ExactSpelling = true, CharSet = CharSet.Auto)]
         public static extern bool SetForegroundWindow(HandleRef hWnd);
@@ -16,17 +16,24 @@ namespace Net5SelfHost.WinForms
         {
             InitializeComponent();
             _syncRoot = SynchronizationContext.Current;
-            notifyIcon1.Click += new EventHandler(notifyIcon1_Click);
+             notifyIcon1.Click += new EventHandler(notifyIcon1_Click);
             toolStripItemExit.Click += new EventHandler(ExitApp);
-            // this.Hide();
-            
-
+            Closed += (a, b) =>
+            {
+                if (notifyIcon1 != null)
+                {
+                    notifyIcon1.Dispose();
+                    notifyIcon1.Icon = null;
+                    notifyIcon1.Visible = false;
+                }
+            };
         }
 
         private void ExitApp(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         private void notifyIcon1_Click(object sender, EventArgs e)
         {
             SetForegroundWindow(new HandleRef(this, this.Handle));
